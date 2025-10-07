@@ -1,5 +1,6 @@
-function render(reactElements, rootElement) {
+export function render(reactElements, rootElement) {
   const DomElement = createDomElement(reactElements);
+  document.getElementById("root").innerHTML = "";
   if (Array.isArray(DomElement)) {
     rootElement.append(...DomElement);
   } else {
@@ -49,4 +50,3 @@ function createDomElement(reactElements) {
 
   return DomElement;
 }
-export { render };
