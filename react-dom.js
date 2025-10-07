@@ -23,21 +23,22 @@ function createDomElement(reactElements) {
   }
 
   const DomElement = document.createElement(type);
-  Object.entries(props).forEach(([key, value]) => {
-    if (key != "children") DomElement[key] = value;
-  });
-  props.children.forEach((element) => {
-    if (typeof element === "string") {
-      const textNode = document.createTextNode(element);
-      DomElement.append(textNode);
-    } else {
+
+  if (props) {
+    Object.entries(props).forEach(([key, value]) => {
+      if (key != "children") DomElement[key] = value;
+    });
+    props.children?.forEach((element) => {
       if (Array.isArray(element)) {
         DomElement.append(...element.map((el) => createDomElement(el)));
-      } else {
+      } else if (typeof element?.type === "string") {
         DomElement.append(createDomElement(element));
+      } else {
+        const textNode = document.createTextNode(element);
+        DomElement.append(textNode);
       }
-    }
-  });
+    });
+  }
 
   return DomElement;
 }
