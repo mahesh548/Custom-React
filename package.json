@@ -1,0 +1,17 @@
+{
+  "name": "custom-react",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "parcel index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@babel/preset-react": "^7.27.1",
+    "parcel": "^2.16.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.4"
+  }
+}
