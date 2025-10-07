@@ -13,7 +13,7 @@ let state = [];
 let stateIndex = 0;
 export const useState = (initialState) => {
   let localIndex = stateIndex;
-  state[localIndex] = state[localIndex] || initialState;
+  state[localIndex] = state[localIndex] ?? initialState;
   const setState = (newState) => {
     state[localIndex] = newState;
     stateIndex = 0;
