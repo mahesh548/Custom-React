@@ -26,7 +26,14 @@ function createDomElement(reactElements) {
 
   if (props) {
     Object.entries(props).forEach(([key, value]) => {
-      if (key != "children") DomElement[key] = value;
+      if (key == "style") {
+        Object.entries(value).forEach(([style, styleValue]) => {
+          DomElement.style[style] = styleValue;
+        });
+      }
+      if (key != "children" && key != "style") {
+        DomElement[key] = value;
+      }
     });
     props.children?.forEach((element) => {
       if (Array.isArray(element)) {
